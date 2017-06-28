@@ -48,7 +48,9 @@ var education = {
         name: "Citrus College",
         location: "Glendora, CA",
         degree: "Associate",
-        majors: "Web Design",
+        majors: [
+            "Web Design"
+        ],
         dates: "3"
     },
     {
@@ -92,11 +94,11 @@ education.display = function(){
         var formattedSDates = HTMLschoolDates.replace("%data%",education.schools[i].dates);
         var formattedSLoc = HTMLschoolLocation.replace("%data%",education.schools[i].location);
         $(".education-entry:last").append(formattedSLoc, formattedSDates);
+        for(var j = 0; j < education.schools[i].majors.length; j++){
+            var formattedSM = HTMLschoolMajor.replace("%data%",education.schools[i].majors[j]);
+            $(".education-entry:last").append(formattedSM);
+        }
 
-        for(var x = 0; x < education.schools[i].majors.length; x++){
-            var formattedSM = HTMLschoolMajor.replace("%data%",education.schools[i].majors);
-        };
-        $(".education-entry:last").append(formattedSM);
     }
 
     for(var x = 0; x < education.onlineCourses.length; x++){
@@ -187,9 +189,9 @@ projects.display = function(){
         $(".project-entry:last").append(formattedPT, formattedPD, formattedPDes);
 
         for(var x = 0; x < projects.projects[i].images.length; x++){
-            var formattedPI = HTMLprojectImage.replace("%data%",projects.projects[i].images);
+            var formattedPI = HTMLprojectImage.replace("%data%",projects.projects[i].images[x]);
             $(".project-entry:last").append(formattedPI);
-        };
+        }
     }
 };
 projects.display();
